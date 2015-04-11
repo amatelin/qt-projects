@@ -1,7 +1,6 @@
 TEMPLATE = app
 
 QT += qml quick widgets
-QT += quick sensors svg xml
 
 SOURCES += main.cpp
 
@@ -14,7 +13,6 @@ QML_IMPORT_PATH =
 include(deployment.pri)
 
 DISTFILES += \
-    boob.png \
     android/gradle/wrapper/gradle-wrapper.jar \
     android/AndroidManifest.xml \
     android/res/values/libs.xml \
