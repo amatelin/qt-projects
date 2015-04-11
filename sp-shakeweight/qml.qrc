@@ -2,5 +2,7 @@
     <qresource prefix="/">
         <file>main.qml</file>
         <file>MainForm.ui.qml</file>
+        <file>main.cpp</file>
+        <file>content/audio/audio1.wav</file>
     </qresource>
 </RCC>
