@@ -4,5 +4,14 @@
         <file>main.cpp</file>
         <file>main.qml</file>
         <file>MainForm.ui.qml</file>
+        <file>audioPlayer.qml</file>
+        <file>voiceOver.js</file>
+
+        <file>content/audio/keep/001.wav</file>
+        <file>content/audio/keep/002.wav</file>
+        <file>content/audio/more/001.wav</file>
+        <file>content/audio/more/002.wav</file>
+
+
     </qresource>
 </RCC>

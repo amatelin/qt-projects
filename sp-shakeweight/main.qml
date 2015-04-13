@@ -4,6 +4,7 @@ import QtQuick.Window 2.2
 import QtSensors 5.1
 import QtSensors 5.1 as Sensors
 import QtMultimedia 5.0
+import "voiceOver.js" as VoiceOver
 
 ApplicationWindow {
     id: window
@@ -11,15 +12,18 @@ ApplicationWindow {
     height: 480
     visible: true
 
+    property int compliment_i: 14
+
 
     property string state: "listening"
-    property int baseCoeff: 1
-
+    property real baseCoeff: 1.5
 
     MouseArea {
         anchors.fill: parent
         onClicked: {
-            console.debug("Yay")
+            console.debug("Yay");
+            accelero.active = !accelero.active;
+            console.debug(accelero.active);
         }
     }
 
@@ -28,18 +32,22 @@ ApplicationWindow {
         active: true
         onReadingChanged: {
                 var y_delta = getCleanValue()
-                if (y_delta<=baseCoeff) {
-                    console.debug("IDLE")
-                    //voiceOver.playQuicky()
-                } else if (y_delta>baseCoeff&y_delta<=baseCoeff*12.5) {
-                    voiceOver.playGood()
+                if (y_delta<=baseCoeff*5) {
+//                    VoiceOver.playIdle();
+//                    console.debug("IDLE")
+                } else if (y_delta>baseCoeff*5&y_delta<=baseCoeff*15) {
 //                    console.debug("SLOW")
-                } else if (y_delta>baseCoeff*12.5&y_delta<=baseCoeff*20) {
-                    playAlmost()
-                    console.debug("MEDIUM")
-                } else if (y_delta>baseCoeff*20) {
-                    console.debug("FAST")
-                    playCompliment()
+                    console.log("B")
+                    console.log(window.state)
+                    VoiceOver.playSlow();
+                } else if (y_delta>baseCoeff*15&y_delta<=baseCoeff*25) {
+//                    console.debug("MEDIUM")
+//                    VoiceOver.playMedium();
+                } else if (y_delta>baseCoeff*25&y_delta<baseCoeff*35) {
+//                    console.debug("FAST")
+//                    VoiceOver.playFast();
+                } else if (y_delta>=baseCoeff*35) {
+//                    VoiceOver.playVeryFast();
                 }
             }
 
@@ -52,80 +60,11 @@ ApplicationWindow {
         id: timer
         running: false
         repeat: false
+        interval: 100
         onTriggered: {
+            console.debug("d")
             window.state = "listening"
         }
     }
-
-    Audio {
-        id: voiceOver
-        property int almost_i: 2
-        property int compliment_i: 14
-        property int end_i: 5
-        property int fingers_i: 2
-        property int good_i: 4
-        property int keep_i: 3
-        property int more_i: 4
-        property int motivation_i: 7
-        property int quicky_i: 1
-        property int yes_i: 4
-
-        function playSomething(name, length)
-        {
-            if (length>1&window.state==="listening")
-            {
-                source = "content/audio/" + name + "/" + pad(length, 3) + ".wav"
-                timer.interval = duration
-                window.state = "playing"
-                play()
-                timer.start()
-                length-=1
-            }
-        }
-
-        function playAlmost(){
-            playSomething("almost", almost_i)
-        }
-
-        function playCompliment(){
-            playSomething("compliment", compliment_i)
-        }
-
-        function playEnd(){
-
-        }
-
-        function playFinger(){
-
-        }
-        function playGood(){
-
-        }
-        function playKeep(){
-
-        }
-        function playMore(){
-
-        }
-        function playMotivation(){
-
-        }
-        function playQuicky(){
-
-        }
-        function playYes(){
-
-        }
-    }
-
-
-
-    function pad(n, width, z) {
-      z = z || '0';
-      n = n + '';
-      return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;
-    }
-
-
 
 }
