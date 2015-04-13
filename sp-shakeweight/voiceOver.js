@@ -1,8 +1,16 @@
 var options_names = ["almost", "compliment", "end", "fingers", "good", "keep",
                      "more", "motivation", "pill", "quicky", "yes"];
 var options_length = [4, 14, 5, 2, 4, 3, 4, 7, 2, 3, 4];
-
 var playerComponent;
+var player;
+
+initialize();
+
+
+function initialize () {
+    playerComponent = Qt.createComponent("audioPlayer.qml");
+    player = playerComponent.createObject(window);
+}
 
 
 function playIdle() {
@@ -51,24 +59,10 @@ function playVeryFast() {
 
 
 function playSound(name, ref) {
-    if (playerComponent == null)
-        playerComponent = Qt.createComponent("audioPlayer.qml");
 
-    if (playerComponent.status == Component.Ready) {
-        var player = playerComponent.createObject(window,  {source:"content/audio/" + name + "/" + pad(ref, 3) + ".wav"});
-        player.playAudio(name, ref);
-
-        if (player == null) {
-            console.log("error instanciating the player");
-            console.log(player.errorString());
-            return false
-        }
-    } else {
-        console.log("error loading player component");
-        console.log(playerComponent.errorString());
-        return false;
-    }
-
+    var source = "content/audio/" + name + "/" + pad(ref, 3) + ".wav"
+    player.source = source;
+    player.play();
 
 }
 

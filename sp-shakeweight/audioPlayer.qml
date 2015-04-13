@@ -1,24 +1,22 @@
-import QtMultimedia 5.0
+import QtMultimedia 5.4
 
-Audio {
-    id: player
-    autoLoad: false
 
-    function playAudio(name, ref) {
-        console.debug(source);
-        console.log(status.toString());
-        play();
+SoundEffect {
+    id: soundEffect
+
+    onPlayingChanged: {
+        if (playing)
+            window.state = "playing";
+        else
+            timer.start();
     }
 
-    onPlaying: {
-        if (!error)
-             window.state = "playing";
-        }
-
-    onStopped: {
-        if (!error)
-            timer.start()
-            console.log("ok");
+    onStatusChanged: {
+        if (status == 3)
+            window.state = "listening"
     }
 
 }
+
+
+

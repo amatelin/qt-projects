@@ -37,8 +37,6 @@ ApplicationWindow {
 //                    console.debug("IDLE")
                 } else if (y_delta>baseCoeff*5&y_delta<=baseCoeff*15) {
 //                    console.debug("SLOW")
-                    console.log("B")
-                    console.log(window.state)
                     VoiceOver.playSlow();
                 } else if (y_delta>baseCoeff*15&y_delta<=baseCoeff*25) {
 //                    console.debug("MEDIUM")
@@ -50,6 +48,7 @@ ApplicationWindow {
 //                    VoiceOver.playVeryFast();
                 }
             }
+
 
         function getCleanValue() {
             return Math.round(Math.abs(reading.y))
