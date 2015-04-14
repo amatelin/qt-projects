@@ -3,15 +3,90 @@
         <file>qml.qrc</file>
         <file>main.cpp</file>
         <file>main.qml</file>
-        <file>MainForm.ui.qml</file>
         <file>audioPlayer.qml</file>
         <file>voiceOver.js</file>
-
-        <file>content/audio/keep/001.wav</file>
-        <file>content/audio/keep/002.wav</file>
-        <file>content/audio/more/001.wav</file>
-        <file>content/audio/more/002.wav</file>
-
-
+        <file>content/img/game01.png</file>
+        <file>content/img/menu01.png</file>
+        <file>content/audio/almost/001.wav</file>
+        <file>content/audio/almost/002.wav</file>
+        <file>content/audio/almost/003.wav</file>
+        <file>content/audio/comment/001.wav</file>
+        <file>content/audio/comment/002.wav</file>
+        <file>content/audio/comment/003.wav</file>
+        <file>content/audio/compliment/001.wav</file>
+        <file>content/audio/compliment/002.wav</file>
+        <file>content/audio/compliment/003.wav</file>
+        <file>content/audio/compliment/004.wav</file>
+        <file>content/audio/compliment/005.wav</file>
+        <file>content/audio/compliment/006.wav</file>
+        <file>content/audio/compliment/007.wav</file>
+        <file>content/audio/compliment/008.wav</file>
+        <file>content/audio/compliment/009.wav</file>
+        <file>content/audio/compliment/010.wav</file>
+        <file>content/audio/compliment/011.wav</file>
+        <file>content/audio/compliment/012.wav</file>
+        <file>content/audio/compliment/013.wav</file>
+        <file>content/audio/compliment/014.wav</file>
+        <file>content/audio/compliment/015.wav</file>
+        <file>content/audio/compliment/016.wav</file>
+        <file>content/audio/cum/001.wav</file>
+        <file>content/audio/encouraging/001.wav</file>
+        <file>content/audio/encouraging/002.wav</file>
+        <file>content/audio/encouraging/003.wav</file>
+        <file>content/audio/encouraging/004.wav</file>
+        <file>content/audio/encouraging/005.wav</file>
+        <file>content/audio/encouraging/006.wav</file>
+        <file>content/audio/encouraging/007.wav</file>
+        <file>content/audio/encouraging/008.wav</file>
+        <file>content/audio/encouraging/009.wav</file>
+        <file>content/audio/encouraging/010.wav</file>
+        <file>content/audio/encouraging/011.wav</file>
+        <file>content/audio/faster/001.wav</file>
+        <file>content/audio/faster/002.wav</file>
+        <file>content/audio/faster/003.wav</file>
+        <file>content/audio/faster/004.wav</file>
+        <file>content/audio/faster/005.wav</file>
+        <file>content/audio/faster/006.wav</file>
+        <file>content/audio/faster/007.wav</file>
+        <file>content/audio/going_away/001.wav</file>
+        <file>content/audio/going_away/002.wav</file>
+        <file>content/audio/going_away/003.wav</file>
+        <file>content/audio/going_away/004.wav</file>
+        <file>content/audio/going_away/005.wav</file>
+        <file>content/audio/going_away/006.wav</file>
+        <file>content/audio/good/001.wav</file>
+        <file>content/audio/good/002.wav</file>
+        <file>content/audio/good/003.wav</file>
+        <file>content/audio/insert_finger/001.wav</file>
+        <file>content/audio/insert_finger/002.wav</file>
+        <file>content/audio/keep_going/001.wav</file>
+        <file>content/audio/keep_going/002.wav</file>
+        <file>content/audio/keep_going/003.wav</file>
+        <file>content/audio/quick_workout/001.wav</file>
+        <file>content/audio/quick_workout/002.wav</file>
+        <file>content/audio/quick_workout/003.wav</file>
+        <file>content/audio/quick_workout/004.wav</file>
+        <file>content/audio/quick_workout/005.wav</file>
+        <file>content/audio/quick_workout/006.wav</file>
+        <file>content/audio/quick_workout/007.wav</file>
+        <file>content/audio/quick_workout/008.wav</file>
+        <file>content/audio/quick_workout/009.wav</file>
+        <file>content/audio/quick_workout/010.wav</file>
+        <file>content/audio/quick_workout/011.wav</file>
+        <file>content/audio/quick_workout/012.wav</file>
+        <file>content/audio/quick_workout/013.wav</file>
+        <file>content/audio/random/001.wav</file>
+        <file>content/audio/random/002.wav</file>
+        <file>content/audio/random/003.wav</file>
+        <file>content/audio/random/004.wav</file>
+        <file>content/audio/random/005.wav</file>
+        <file>content/audio/sleep_mode/001.wav</file>
+        <file>content/audio/sleep_mode/002.wav</file>
+        <file>content/audio/tell_me/001.wav</file>
+        <file>content/audio/tell_me/002.wav</file>
+        <file>content/audio/tell_me/003.wav</file>
+        <file>content/audio/workout_finished/001.wav</file>
+        <file>content/audio/workout_finished/002.wav</file>
+        <file>content/img/logo.png</file>
     </qresource>
 </RCC>

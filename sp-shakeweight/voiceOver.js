@@ -27,12 +27,11 @@ initialize();
 function initialize () {
     playerComponent = Qt.createComponent("audioPlayer.qml");
     player = playerComponent.createObject(window);
-    console.log(player.id);
 }
 
 
 function playIdle() {
-    var rand = pickRandomClass(4);
+    var rand = pickRandomClass(50);
 
     if (rand == 1)
         playRandomSound(10); // quick_workout
@@ -76,27 +75,37 @@ function playFast() {
 
 function playVeryFast() {
     var rand = pickRandomClass(2);
-        if (rand == 1)
-            playRandomSound(8); // fingers
-        else {
-            playRandomSound(0); // almost
-            rand = pickRandomClass(1);
-            if (rand == 1) {
-                playCumSequence();
-            }
+    if (rand == 1)
+        playRandomSound(8); // fingers
+    else {
+        playRandomSound(0); // almost
+        rand = pickRandomClass(10);
+        console.log(rand);
+        if (rand == 5) {
+            accelero.active = false;
+            playCumSequence();
         }
+    }
 }
 
 function playCumSequence() {
         player.stop();
-        console.log("A")
-        var rand1 = pickRandomClass(options_length[3]);
-        var rand2 = pickRandomClass(options_length[14]);
-        var rand3 = pickRandomClass(options_length[6]);
+        var rand1 = pickRandomClass(2);
+        var rand2;
+        var name;
 
-        player.source1 = "content/audio/" + options_names[3] + "/" + pad(rand1, 3) + ".wav"
-        player.source2 = "content/audio/" + options_names[14] + "/" + pad(rand2, 3) + ".wav"
-        player.source3 = "content/audio/" + options_names[6] + "/" + pad(rand3, 3) + ".wav"
+        if (rand1 == 1) {
+            name = options_names[14];
+            rand2 = pickRandomClass(options_length[14]);
+        }
+        else {
+            name =  options_names[6];
+            rand2 = pickRandomClass(options_length[6]);
+        }
+
+
+        player.source1 = "content/audio/" + options_names[3] + "/" + pad(1, 3) + ".wav"
+        player.source2 = "content/audio/" + name + "/" + pad(rand2, 3) + ".wav"
         player.goodBye();
 
 }
@@ -112,15 +121,8 @@ function playSound(name, ref) {
 }
 
 function pickRandomClass(classNbr) {
-    var rand = Math.random();
-    var dist = [];
-
-    for (var i=0; i<classNbr; i++) {
-        dist[i] = Math.abs(1/(i+1)-rand) ;
-    }
-
-    var min_dist = Math.min.apply(null, dist);
-    var chosenClass = dist.indexOf(min_dist) + 1;
+    var chosenClass = Math.round(Math.random()*(classNbr-1))+1
+    console.log(chosenClass);
 
     return chosenClass
 }

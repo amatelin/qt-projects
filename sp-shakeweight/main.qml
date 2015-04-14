@@ -10,8 +10,7 @@ import "voiceOver.js" as VoiceOver
 ApplicationWindow {
     id: window
     visible: true
-    width: 640
-    height: 480
+    visibility: Window.FullScreen
 
     property int compliment_i: 14
     property real baseCoeff: 1
@@ -25,7 +24,9 @@ ApplicationWindow {
 
         onVisibleChanged: {
             if (visible) {
+                timer0.running = false;
                 accelero.active = false;
+                VoiceOver.player.stop();
             }
         }
 
@@ -40,7 +41,6 @@ ApplicationWindow {
             anchors.fill: parent
             enabled: screen1.visible
             onClicked: {
-                console.debug("Yay");
                 screenManager.state = "game";
             }
             }
@@ -75,21 +75,16 @@ ApplicationWindow {
         active: false
         onReadingChanged: {
                 var y_delta = getCleanValue()
-                if (y_delta<=baseCoeff) {
+                if (y_delta>0&y_delta<=baseCoeff) {
                     VoiceOver.playIdle();
-//                    console.debug("IDLE")
                 } else if (y_delta>baseCoeff*5&y_delta<=baseCoeff*15) {
-//                    console.debug("SLOW")
-//                    VoiceOver.playSlow();
+                    VoiceOver.playSlow();
                 } else if (y_delta>baseCoeff*15&y_delta<=baseCoeff*25) {
-//                    console.debug("MEDIUM")
-//                    VoiceOver.playMedium();
+                    VoiceOver.playMedium();
                 } else if (y_delta>baseCoeff*25&y_delta<baseCoeff*35) {
-//                    console.debug("FAST")
-//                    VoiceOver.playFast();
-                    VoiceOver.playCumSequence();
+                    VoiceOver.playFast();
                 } else if (y_delta>=baseCoeff*35) {
-//                    VoiceOver.playVeryFast();
+                    VoiceOver.playVeryFast();
                 }
             }
 
@@ -137,8 +132,25 @@ ApplicationWindow {
     }
 
     Timer {
+        id: timer0
+        interval: 50
+        running: false
+
+        onTriggered: {
+            if (VoiceOver.player.playing) {
+                accelero.active = false;
+                timer0.start();
+            }
+            else {
+                 accelero.active = true;
+                }
+        }
+    }
+
+    Timer {
         id: timer1
         interval: 15
+        running: false
 
         onTriggered: {
             if (VoiceOver.player.playing) {
@@ -156,27 +168,14 @@ ApplicationWindow {
     Timer {
         id: timer2
         interval: 15
+        running: false
 
         onTriggered: {
             if (VoiceOver.player.playing)
                 timer2.start();
             else {
-                VoiceOver.player.source = VoiceOver.player.source3;
-                VoiceOver.player.play();
-                timer3.start();
-             }
-        }
-    }
-    Timer {
-        id: timer3
-        interval: 15
-
-        onTriggered: {
-            if (VoiceOver.player.playing)
-                timer3.start();
-            else {
                 screenManager.state = "menu"
-            }
+             }
         }
     }
 
